@@ -5,7 +5,8 @@ import axios from "axios";
 import toast from "react-hot-toast";
 
 const API_BASE_URL =
-  process.env.REACT_APP_API_BASE_URL || "http://localhost:8000/api";
+  process.env.REACT_APP_API_BASE_URL ||
+  "https://mern-stack-todo-app-delta.vercel.app/api";
 
 const AddTask = () => {
   const initialTask = {
