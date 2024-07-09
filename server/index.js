@@ -13,7 +13,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(
   cors({
-    origin: ["https://your-frontend-domain.vercel.app"],
+    origin: ["https://mern-stack-todo-app-frontend-tau.vercel.app/"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
