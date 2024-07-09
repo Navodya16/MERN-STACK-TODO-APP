@@ -11,11 +11,14 @@ const app = express();
 
 // Middleware
 app.use(bodyParser.json());
-app.use(cors({
-  origin: ["https://mern-stack-todo-app-frontend-tau.vercel.app"],
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true,
-}));
+app.use(
+  cors({
+    origin: ["https://your-frontend-domain.vercel.app"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })
+);
 
 const PORT = process.env.PORT || 7000;
 const MONGOURL = process.env.MONGO_URL;
