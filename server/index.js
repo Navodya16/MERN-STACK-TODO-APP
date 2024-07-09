@@ -5,7 +5,12 @@ import dotenv from "dotenv";
 import cors from "cors";
 import taskroute from "./routes/taskRoute.js";
 
+// Load environment variables
 dotenv.config();
+
+// Verify environment variables
+console.log("PORT:", process.env.PORT); // Should log: 8000
+console.log("MONGO_URL:", process.env.MONGO_URL); // Should log the MongoDB URI
 
 const app = express();
 
