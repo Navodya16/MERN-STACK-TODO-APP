@@ -13,7 +13,13 @@ dotenv.config();
 const PORT = process.env.PORT || 7000;
 const MONGOURL = process.env.MONGO_URL;
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [""],
+    method: ["POST", "GET"],
+    credentials: true,
+  })
+);
 
 mongoose
   .connect(MONGOURL)
