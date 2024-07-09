@@ -16,7 +16,7 @@ const MONGOURL = process.env.MONGO_URL;
 app.use(
   cors({
     origin: ["https://mern-stack-todo-app-frontend-tau.vercel.app"],
-    method: ["POST", "GET"],
+    method: ["POST", "GET", "PUT", "DELETE"],
     credentials: true,
   })
 );
