@@ -1,18 +1,43 @@
 .taskTable {
-  width: 60%;
-  margin: 50px auto;
+  width: 90%;
+  max-width: 1000px;
+  margin: 20px auto;
   background-color: white;
-  padding: 50px;
+  padding: 20px;
   border-radius: 10px;
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.065);
+  overflow-x: auto;
 }
+
+.taskHeader {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.taskHeader .btn {
+  margin-bottom: 10px;
+}
+
+.taskHeader .search-input {
+  margin: 5px 0;
+  width: 100%;
+  max-width: 300px;
+}
+
 .taskTable table {
   width: 100%;
   margin-top: 30px;
+  border-collapse: collapse;
 }
+
 .taskTable table thead th {
   background-color: darkcyan;
   color: white;
+  padding: 10px;
+  text-align: center;
 }
 
 .taskTable table tbody td {
@@ -20,6 +45,57 @@
   text-align: center;
   vertical-align: middle;
 }
+
+.taskTable table tbody td .btn {
+  margin: 5px;
+}
+
+.actionButtons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .actionButtons button {
-  margin: 0 10px;
+  margin: 5px;
+}
+
+@media (max-width: 768px) {
+  .taskTable {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .taskHeader {
+    flex-direction: column;
+  }
+
+  .taskHeader .search-input {
+    max-width: 100%;
+  }
+
+  .taskTable table thead th,
+  .taskTable table tbody td {
+    padding: 5px;
+  }
+
+  .actionButtons button {
+    margin: 5px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .taskTable {
+    padding: 5px;
+  }
+
+  .taskHeader .btn {
+    width: 100%;
+  }
+
+  .taskTable table thead th,
+  .taskTable table tbody td {
+    font-size: 14px;
+    padding: 5px;
+  }
 }

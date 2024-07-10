@@ -9,8 +9,8 @@ import taskroute from "./routes/taskRoute.js";
 dotenv.config();
 
 // Verify environment variables
-console.log("PORT:", process.env.PORT); // Should log: 8000
-console.log("MONGO_URL:", process.env.MONGO_URL); // Should log the MongoDB URI
+//console.log("PORT:", process.env.PORT); // Should log: 8000
+//console.log("MONGO_URL:", process.env.MONGO_URL); // Should log the MongoDB URI
 
 const app = express();
 
@@ -19,11 +19,13 @@ app.use(bodyParser.json());
 app.use(
   cors({
     origin: ["https://mern-stack-todo-app-frontend-tau.vercel.app"],
+    // origin: ["http://localhost:8000"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })
 );
+//app.use(cors())
 
 const PORT = process.env.PORT || 7000;
 const MONGOURL = process.env.MONGO_URL;

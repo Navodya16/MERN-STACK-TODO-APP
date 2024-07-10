@@ -10,6 +10,8 @@ const API_BASE_URL =
 
 const Task = () => {
   const [tasks, setTasks] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [dueDateFilter, setDueDateFilter] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -57,11 +59,37 @@ const Task = () => {
     }
   };
 
+  const filteredTasks = tasks.filter((task) => {
+    const isTitleMatch = task.title
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+    const isDueDateMatch = dueDateFilter
+      ? new Date(task.dueDate).toISOString().slice(0, 10) === dueDateFilter
+      : true;
+    return isTitleMatch && isDueDateMatch;
+  });
+
   return (
     <div className="taskTable">
-      <Link to="/add" type="button" className="btn btn-primary">
-        Add Task <i className="fa fa-tasks"></i>
-      </Link>
+      <div className="taskHeader">
+        <Link to="/add" type="button" className="btn btn-primary">
+          Add Task <i className="fa fa-tasks"></i>
+        </Link>
+        <input
+          type="text"
+          placeholder="Search by title"
+          className="form-control search-input"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <input
+          type="date"
+          placeholder="Filter by due date"
+          className="form-control search-input"
+          value={dueDateFilter}
+          onChange={(e) => setDueDateFilter(e.target.value)}
+        />
+      </div>
 
       <table className="table table-bordered mt-3">
         <thead>
@@ -75,7 +103,7 @@ const Task = () => {
           </tr>
         </thead>
         <tbody>
-          {tasks.map((task, index) => (
+          {filteredTasks.map((task, index) => (
             <tr key={task._id}>
               <td>{index + 1}</td>
               <td>{task.title}</td>
